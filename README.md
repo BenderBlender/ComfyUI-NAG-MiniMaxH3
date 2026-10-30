@@ -43,6 +43,21 @@ Restart ComfyUI.
 
 `Apply NAG (MiniMax H3)` patches the `MODEL` itself, so every sampler or guider after it samples with NAG. Applying NAG a second time replaces the earlier settings.
 
+## Example workflows
+
+Example workflows are available in the [`workflows`](workflows) directory. They are built from ComfyUI's own Pika H3 Flex (MiniMax H3) templates and run three branches side by side with the same models, inputs, seed, sampler and sigmas, so the videos differ only by guidance:
+
+1. **Without NAG**: the original template (`BasicGuider`).
+2. **NAG, empty negative prompt**: `NAGGuider (MiniMax H3)` with an empty NAG negative prompt.
+3. **NAG, negative prompt**: `NAGGuider (MiniMax H3)` with a filled NAG negative prompt.
+
+| Workflow | Task | ComfyUI template |
+| --- | --- | --- |
+| [NAG-MiniMax-H3-Pika-Flex-FL2VA](workflows/NAG-MiniMax-H3-Pika-Flex-FL2VA-ComfyUI-Workflow.json) | first and last frame to video | Pika H3 Flex: FL2VA |
+| [NAG-MiniMax-H3-Pika-Flex-REF2VA](workflows/NAG-MiniMax-H3-Pika-Flex-REF2VA-ComfyUI-Workflow.json) | reference images to video | Pika H3 Flex: Reference to Video |
+
+The model files and input images are linked in each workflow's `Note: Model Links`. The FL2VA template's subgraph is unpacked into a flat graph so the three branches are visible. Running all three branches takes three to four times as long as the template (NAG adds a second attention pass): mute the ones you don't need (Ctrl+M).
+
 ## Usage
 
 1. Build your usual MiniMax H3 workflow (text-to-video, image-to-video, reference-to-video or keyframe guides).
@@ -91,6 +106,7 @@ NAG is installed through ComfyUI's model patches (a diffusion-model wrapper plus
 - [Normalized Attention Guidance](https://github.com/ChenDarYen/Normalized-Attention-Guidance) by Dar-Yen Chen et al.
 - [ComfyUI-NAG](https://github.com/ChenDarYen/ComfyUI-NAG) by Dar-Yen Chen (MIT): the node design and the NAG formula used here.
 - [ComfyUI](https://github.com/comfyanonymous/ComfyUI) and its native MiniMax H3 implementation.
+- The example workflows are based on the Pika H3 Flex templates from [ComfyUI workflow templates](https://github.com/Comfy-Org/workflow_templates) (Comfy-Org, MIT) and use [Pika H3 Flex](https://github.com/Pika-Labs/Pika-H3-Flex).
 
 ## License
 
