@@ -1,0 +1,14 @@
+[project]
+name = "comfyui-nag-minimaxh3"
+description = "Normalized Attention Guidance (NAG) nodes for MiniMax H3 audio-video models in ComfyUI"
+version = "0.1.0"
+license = { file = "LICENSE" }
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/BenderBlender/ComfyUI-NAG-MiniMaxH3"
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI-NAG-MiniMaxH3"
+Icon = ""
